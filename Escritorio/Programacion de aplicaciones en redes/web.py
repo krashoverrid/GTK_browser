@@ -10,7 +10,7 @@ webview=WebKit.WebView()
 headerbar=Gtk.HeaderBar()
 headerbar.set_show_close_button(True)
 
-
+# seccion functions
 def on_destroy(window):
     Gtk.main_quit()
 
@@ -33,8 +33,8 @@ def update_buttons(widget, data=None):
     go_back_button.set_sensitive(webview.can_go_back())
     go_forward_button.set_sensitive(webview.can_go_forward())
 
+#secction buttons
 go_back_button=Gtk.Button()
-#go_back_arrow=Gtk.Image.new_from_icon_name("go-previus",Gtk.IconSize.SMALL_TOOLBAR)
 go_back_arrow = Gtk.Image()
 go_back_arrow.set_from_file("/usr/share/icons/gnome/22x22/actions/back.png")
 go_back_button.add(go_back_arrow)
@@ -82,8 +82,6 @@ def on_enter(entry):
 entry=Gtk.Entry()
 entry.connect("activate",on_enter)
 
-#headerbar.set_custom_title(entry)
-
 webview.connect("load_committed", update_buttons)
 
 headerbar.pack_start(go_back_button)
@@ -94,7 +92,6 @@ headerbar.pack_start(entry)
 headerbar.pack_start(history_button)
 
 scrolled_window=Gtk.ScrolledWindow()
-
 webview.open("https://www.facebook.com/")
 
 scrolled_window.add(webview)
