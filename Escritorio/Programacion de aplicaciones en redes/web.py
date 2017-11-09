@@ -15,7 +15,7 @@ def on_destroy(window):
     Gtk.main_quit()
 
 def history(widget,data=None):
-        webview.open("/history.html")
+        webview.open("/tmp/history.html")
 
 def go_back(widget, data=None):
     webview.go_back()
@@ -69,12 +69,12 @@ def on_enter(entry):
         webview.open(url)
 
         if (url == "about:history"):
-			webview.open("/history.html")
+			webview.open("/tmp/history.html")
 			return
         else:
             url= "http://"+url
 		
-        history_file = open("/history.html","a+")
+        history_file = open("/tmp/history.html","a+")
         history_file.writelines("-> " + url + "<br>")
         history_file.close()
         webview.open(url)
